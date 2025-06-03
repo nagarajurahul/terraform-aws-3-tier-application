@@ -31,7 +31,7 @@ resource "aws_launch_template" "frontend"{
         configured = true
     }
 
-    image_id = data.aws_ami.ubuntu
+    image_id = data.aws_ami.ubuntu.image_id
 
     # Free tier
     instance_type = "t2.micro"
