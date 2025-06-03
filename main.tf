@@ -35,6 +35,8 @@ resource "aws_launch_template" "frontend"{
         }
     }
 
+    update_default_version = true
+
     # For compliance
     # disable_api_stop        = true
     # disable_api_termination = true
