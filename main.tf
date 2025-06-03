@@ -28,11 +28,17 @@ resource "aws_launch_template" "frontend"{
     instance_type = "t2.micro"
 
     tag_specifications {
-        resource_type = "launch-template"
+        resource_type = "instance"
 
         tags = {
             Type = "frontend"
+            Name = "frontend-instance"
         }
+    }
+
+     tags = {
+        TemplateOwner = "Owner"
+        Env           = "production"
     }
 
     update_default_version = true
