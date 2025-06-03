@@ -22,15 +22,6 @@ resource "aws_launch_template" "frontend"{
     name = "frontend-launch-template"
     description = "Launch template for frontend"
 
-    # For compliance
-    # disable_api_stop        = true
-    # disable_api_termination = true
-
-    # For hibernation
-    hibernation_options {
-        configured = true
-    }
-
     image_id = data.aws_ami.ubuntu.image_id
 
     # Free tier
@@ -42,5 +33,14 @@ resource "aws_launch_template" "frontend"{
         tags = {
             Type = "frontend"
         }
+    }
+
+    # For compliance
+    # disable_api_stop        = true
+    # disable_api_termination = true
+
+    # For hibernation
+    hibernation_options {
+        configured = true
     }
 }
