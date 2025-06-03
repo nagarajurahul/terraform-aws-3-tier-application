@@ -1,7 +1,7 @@
 provider "aws" {
 }
 
-data "aws_ami" "linux"{
+data "aws_ami" "ubuntu"{
     owners = ["amazon"]
 
     most_recent = true
@@ -30,6 +30,8 @@ resource "aws_launch_template" "frontend"{
     hibernation_options {
         configured = true
     }
+
+    image_id = aws_ami.ubuntu
 
     # Free tier
     instance_type = "t2.micro"
