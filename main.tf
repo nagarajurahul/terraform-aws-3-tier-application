@@ -20,6 +20,7 @@ data "aws_ami" "linux"{
 
 resource "aws_launch_template" "frontend"{
     name = "frontend-launch-template"
+    description = "Launch template for frontend"
 
     # For compliance
     # disable_api_stop        = true
@@ -29,8 +30,6 @@ resource "aws_launch_template" "frontend"{
     hibernation_options {
         configured = true
     }
-
-    description = "Launch template for frontend"
 
     # Free tier
     instance_type = "t2.micro"
