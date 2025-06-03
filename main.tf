@@ -1,3 +1,15 @@
+provider "aws"{
+
+}
+
+data "aws_ami" "linux"{
+    # region = "us-east-1"
+    # owner = "amazon"
+
+    most_recent = true
+    name_regex = "Ubuntu Server"
+
+}
 
 resource "aws_launch_template" "frontend"{
     name = "frontend"
