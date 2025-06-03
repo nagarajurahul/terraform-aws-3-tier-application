@@ -29,7 +29,7 @@ resource "aws_launch_template" "frontend"{
     instance_type = "t3.micro"
 
     tag_specifications {
-        resource_type = "launch_template"
+        resource_type = "launch-template"
 
         tags = {
             Type = "frontend"
