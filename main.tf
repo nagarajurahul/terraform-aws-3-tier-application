@@ -2,8 +2,7 @@ provider "aws" {
 }
 
 data "aws_ami" "linux"{
-    # region = "us-east-1"
-    owner = "amazon"
+    owners = "amazon"
 
     most_recent = true
     name_regex = "Ubuntu Server"
