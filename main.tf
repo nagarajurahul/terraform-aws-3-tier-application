@@ -52,3 +52,11 @@ resource "aws_launch_template" "frontend"{
         configured = true
     }
 }
+
+resource "aws_instance" "frontend"{
+    associate_public_ip_address = true
+
+    launch_template {
+      id = aws_launch_template.frontend.id
+    }
+}
