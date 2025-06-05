@@ -60,6 +60,8 @@ resource "aws_instance" "frontend"{
     }
 }
 
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html
+
 resource "aws_security_group" "frontend" {
     name = "frontend-security-group"
     description = "Allow only HTTPs from internet"
@@ -69,4 +71,20 @@ resource "aws_security_group" "frontend" {
     tags = {
         Name = "frontend-security-group"
     }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
+  security_group_id = aws_security_group.frontend.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 443
+  ip_protocol       = "tcp"
+  to_port           = 443
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv6" {
+  security_group_id = aws_security_group.frontend.id
+  cidr_ipv6         = "::/0"
+  from_port         = 443
+  ip_protocol       = "tcp"
+  to_port           = 443
 }
