@@ -18,7 +18,7 @@ data "aws_ami" "ubuntu"{
 
 }
 
-resource "aws_launch_template" "frontend"{
+resource "aws_launch_template" "launch_template"{
     name = "frontend-launch-template"
     description = "Launch template for frontend"
 
