@@ -24,7 +24,7 @@ resource "aws_launch_template" "frontend"{
 
     image_id = data.aws_ami.ubuntu.image_id
 
-    instance_type = var.instance-type
+    instance_type = var.instance_type
 
     tag_specifications {
         resource_type = "instance"
@@ -48,7 +48,7 @@ resource "aws_launch_template" "frontend"{
 
     # For hibernation
     hibernation_options {
-        configured = var.hibernation-mode
+        configured = var.hibernation_mode
     }
 }
 
@@ -66,7 +66,7 @@ resource "aws_security_group" "frontend" {
     name = "frontend-security-group"
     description = "Allow only HTTPs from internet"
 
-    vpc_id = var.vpc-id
+    vpc_id = var.vpc_id
 
     tags = {
         Name = "frontend-security-group"
