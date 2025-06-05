@@ -19,8 +19,8 @@ data "aws_ami" "ubuntu"{
 }
 
 resource "aws_launch_template" "launch_template"{
-    name = "frontend-launch-template"
-    description = "Launch template for frontend"
+    name = var.launch_template_name
+    description = var.launch_template_description
 
     image_id = data.aws_ami.ubuntu.image_id
 
@@ -32,14 +32,14 @@ resource "aws_launch_template" "launch_template"{
         resource_type = "instance"
 
         tags = {
-            Type = "frontend"
-            Name = "frontend-instance"
+            Type = type
+            Name = "${var.type}-instance"
         }
     }
 
      tags = {
-        TemplateOwner = "Owner"
-        Env           = "production"
+        TemplateOwner = var.owner
+        Env           = var.env
     }
 
     update_default_version = true

@@ -8,3 +8,18 @@ variable "hibernation_mode"{
 
 variable "vpc_id" {
 }
+
+variable "launch_template_name"{
+}
+
+variable "launch_template_description"{  
+}
+
+variable "type" {
+}
+
+variable "env" {
+}
+
+variable "owner"{  
+}
