@@ -24,8 +24,7 @@ resource "aws_launch_template" "frontend"{
 
     image_id = data.aws_ami.ubuntu.image_id
 
-    # Free tier
-    instance_type = "t2.micro"
+    instance_type = var.instance-type
 
     tag_specifications {
         resource_type = "instance"
@@ -49,7 +48,7 @@ resource "aws_launch_template" "frontend"{
 
     # For hibernation
     hibernation_options {
-        configured = true
+        configured = var.hibernation-mode
     }
 }
 
