@@ -59,3 +59,14 @@ resource "aws_instance" "frontend"{
       id = aws_launch_template.frontend.id
     }
 }
+
+resource "aws_security_group" "frontend" {
+    name = "frontend-security-group"
+    description = "Allow only HTTPs from internet"
+
+    vpc_id = var.vpc-id
+
+    tags = {
+        Name = "frontend-security-group"
+    }
+}

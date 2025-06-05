@@ -5,3 +5,6 @@ variable "instance-type"{
 variable "hibernation-mode"{
     default = false
 }
+
+variable "vpc-id" {
+}
