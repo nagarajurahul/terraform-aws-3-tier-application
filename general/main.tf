@@ -19,8 +19,8 @@ data "aws_ami" "ubuntu"{
 }
 
 resource "aws_launch_template" "launch_template"{
-    name = var.launch_template_name
-    description = var.launch_template_description
+    name = "${var.type}-launch-template"
+    description = "Launch template for ${var.type}"
 
     image_id = data.aws_ami.ubuntu.image_id
 
@@ -54,29 +54,29 @@ resource "aws_launch_template" "launch_template"{
     }
 }
 
-resource "aws_instance" "frontend"{
+resource "aws_instance" "instance"{
     associate_public_ip_address = true
 
     launch_template {
-      id = aws_launch_template.frontend.id
+      id = aws_launch_template.launch_template.id
     }
 }
 
 # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html
 
-resource "aws_security_group" "frontend" {
-    name = "frontend-security-group"
-    description = "Allow only HTTPs from internet"
+resource "aws_security_group" "security_group" {
+    name = "${var.type}-security-group"
+    description = "Security group for ${var.type}"
 
     vpc_id = var.vpc_id
 
     tags = {
-        Name = "frontend-security-group"
+        Name = "${var.type}-security-group"
     }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
-  security_group_id = aws_security_group.frontend.id
+  security_group_id = aws_security_group.security_group.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 443
   ip_protocol       = "tcp"
@@ -84,7 +84,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv6" {
-  security_group_id = aws_security_group.frontend.id
+  security_group_id = aws_security_group.security_group.id
   cidr_ipv6         = "::/0"
   from_port         = 443
   ip_protocol       = "tcp"
@@ -92,7 +92,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv6" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "allow_all_ipv4" {
-  security_group_id = aws_security_group.frontend.id
+  security_group_id = aws_security_group.security_group.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 0
   to_port           = 0
@@ -100,7 +100,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_ipv4" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "allow_all_ipv6" {
-  security_group_id = aws_security_group.frontend.id
+  security_group_id = aws_security_group.security_group.id
   cidr_ipv6         = "::/0"
   from_port         = 0
   to_port           = 0
