@@ -9,3 +9,9 @@ module "general"{
     type = "frontend"
 
 }
+
+module "securit-group"{
+    source = "./security-group"
+
+    security_group_id = module.general.security_group_id
+}
