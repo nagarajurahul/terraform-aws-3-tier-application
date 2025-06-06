@@ -26,6 +26,9 @@ resource "aws_db_instance" "db_instance" {
   # Imp for point in time recovery
   identifier = "my_db"
 
+  db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
+  
+
     
     # # If multi-az is needed
     # multi_az = true
