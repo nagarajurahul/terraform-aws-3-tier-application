@@ -1,5 +1,5 @@
 output "frontend_instance_id"{
-    value = module.general.instance_id
+    value = module.instance_with_template.instance_id
 
     description = "Frontend - Instance ID of the EC2"
 }

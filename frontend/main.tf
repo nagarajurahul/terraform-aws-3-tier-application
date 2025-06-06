@@ -11,8 +11,8 @@ module "security_group_rules"{
     security_group_id = module.security_group.security_group_id
 }
 
-module "general"{
-    source = "../general"
+module "instance_with_template"{
+    source = "../instance-with-template"
 
     owner = var.owner
     env=var.env
