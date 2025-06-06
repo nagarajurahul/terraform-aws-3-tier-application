@@ -38,7 +38,7 @@ resource "aws_db_instance" "db_instance" {
   skip_final_snapshot  = true
 
   # Imp for point in time recovery
-  identifier = "my_db"
+  identifier = "my-db"
 
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
 
