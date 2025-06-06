@@ -67,16 +67,3 @@ resource "aws_instance" "instance"{
       id = aws_launch_template.launch_template.id
     }
 }
-
-# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html
-
-resource "aws_security_group" "security_group" {
-    name = "${var.type}-security-group"
-    description = "Security group for ${var.type}"
-
-    vpc_id = var.vpc_id
-
-    tags = {
-        Name = "${var.type}-security-group"
-    }
-}
