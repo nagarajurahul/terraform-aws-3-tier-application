@@ -1,0 +1,32 @@
+resource "aws_db_instance" "default" {
+  engine               = "mysql"
+  engine_version       = "8.0"
+  parameter_group_name = "default.mysql8.0"
+
+  db_name              = var.db_name
+  
+  instance_class       = var.instance_class
+  allocated_storage    = 10
+
+  username             = var.username
+  password             = var.password
+  
+  # To avoid snapshots for free-tier
+  skip_final_snapshot  = true
+
+  # Imp for point in time recovery
+  identifier = "my_db"
+
+    
+    # # If multi-az is needed
+    # multi_az = true
+
+    # backup_retention_period = 3
+    # backup_window = 
+    # copy_tags_to_snapshot = true
+
+    # # If want to preserve automated backups
+    # delete_automated_backups = false
+    # # For secure db - compliance
+    # deletion_protection = true
+}
