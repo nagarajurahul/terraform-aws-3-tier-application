@@ -5,8 +5,8 @@ module "security_group"{
     vpc_id = var.vpc_id
 }
 
-module "security-group-rules"{
-    source = "./security_group_rules"
+module "security_group_rules"{
+    source = "./security-group-rules"
 
     security_group_id = module.security_group.security_group_id
 }
