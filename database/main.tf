@@ -7,6 +7,13 @@ resource "aws_db_subnet_group" "db_subnet_group" {
   }
 }
 
+module "security-group"{
+    source = "../security-group"
+
+    type = "database"
+    vpc_id = var.vpc_id
+}
+
 resource "aws_db_instance" "db_instance" {
   engine               = "mysql"
   engine_version       = "8.0"
@@ -27,7 +34,7 @@ resource "aws_db_instance" "db_instance" {
   identifier = "my_db"
 
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
-  
+
 
     
     # # If multi-az is needed
