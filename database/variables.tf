@@ -1,5 +1,5 @@
 variable "username" {
-  
+
 }
 variable "password"{
 
@@ -14,4 +14,8 @@ variable "allocated_storage"{
 
 variable "db_name" {
     default = "my_db"
+}
+
+variable "subnet_ids"{
+    type    = list(string)
 }
