@@ -6,7 +6,7 @@ module "security_group"{
 }
 
 module "security_group_rules"{
-    source = "./security-group-rules"
+    source = "../security-group-rules/frontend"
 
     security_group_id = module.security_group.security_group_id
 }
