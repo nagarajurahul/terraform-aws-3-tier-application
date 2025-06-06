@@ -2,7 +2,8 @@ variable "username" {
 
 }
 variable "password"{
-
+    type      = string
+    ephemeral = true
 }
 
 variable "instance_class"{
