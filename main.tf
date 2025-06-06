@@ -22,3 +22,14 @@ module "backend" {
     env=var.env
     vpc_id = var.vpc_id
 }
+
+module "database"{
+    source = "./database"
+
+    source_security_group_id = module.backend.backend_security_group_id
+    vpc_id = var.vpc_id
+    subnet_ids = var.subnet_ids
+
+    username = var.username
+    password = var.password
+}
