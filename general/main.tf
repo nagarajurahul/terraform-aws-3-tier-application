@@ -32,7 +32,7 @@ resource "aws_launch_template" "launch_template"{
 
     instance_type = var.instance_type
 
-    vpc_security_group_ids = [aws_security_group.security_group.id]
+    vpc_security_group_ids = [var.security_group_id]
 
     tag_specifications {
         resource_type = "instance"
