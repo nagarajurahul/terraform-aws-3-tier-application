@@ -21,7 +21,8 @@ resource "aws_db_instance" "default" {
     # # If multi-az is needed
     # multi_az = true
 
-    # backup_retention_period = 3
+    # In days
+    # backup_retention_period = 7
     # backup_window = 
     # copy_tags_to_snapshot = true
 
