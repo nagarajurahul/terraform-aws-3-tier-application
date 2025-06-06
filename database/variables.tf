@@ -20,3 +20,6 @@ variable "db_name" {
 variable "subnet_ids"{
     type    = list(string)
 }
+variable "source_security_group_id" {
+  
+}

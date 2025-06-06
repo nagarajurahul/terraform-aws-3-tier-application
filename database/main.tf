@@ -14,6 +14,13 @@ module "security-group"{
     vpc_id = var.vpc_id
 }
 
+module "security-group-rules"{
+    source = "../security-group-rules/database"
+
+    security_group_id = module.security-group.security_group_id
+    source_security_group_id = var.source_security_group_id
+}
+
 resource "aws_db_instance" "db_instance" {
   engine               = "mysql"
   engine_version       = "8.0"
