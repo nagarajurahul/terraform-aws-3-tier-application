@@ -16,7 +16,7 @@ module "frontend" {
 }
 
 module "backend" {
-    source = "./frontend"
+    source = "./backend"
     
     owner = var.owner
     env=var.env
