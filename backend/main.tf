@@ -11,6 +11,12 @@ module "security_group_rules"{
     security_group_id = module.security_group.security_group_id
 }
 
+module "iam"{
+    source = "../iam"
+
+    type = "backend"
+}
+
 module "instance_with_template"{
     source = "../instance-with-template"
 
@@ -21,4 +27,5 @@ module "instance_with_template"{
     vpc_id = var.vpc_id
     security_group_id = module.security_group.security_group_id
 
+    iam_profile_instance_name=iam.iam_instance_profile_name
 }

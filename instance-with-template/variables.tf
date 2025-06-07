@@ -19,3 +19,6 @@ variable "hibernation_mode"{
 variable "security_group_id"{
 
 }
+variable "iam_instance_profile_name" {
+
+}

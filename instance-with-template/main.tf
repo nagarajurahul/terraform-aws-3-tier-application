@@ -25,6 +25,10 @@ resource "aws_launch_template" "launch_template"{
 
     vpc_security_group_ids = [var.security_group_id]
 
+    iam_instance_profile {
+        name = var.iam_instance_profile_name
+    }
+
     tag_specifications {
         resource_type = "instance"
 
