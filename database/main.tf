@@ -29,16 +29,16 @@ resource "aws_db_instance" "db_instance" {
   db_name              = var.db_name
   
   instance_class       = var.instance_class
-  allocated_storage    = 10
+  allocated_storage    = var.allocated_storage
 
   username             = var.username
   password             = var.password
   
   # To avoid snapshots for free-tier
-  skip_final_snapshot  = true
+  skip_final_snapshot  = var.skip_final_snapshot
 
   # Imp for point in time recovery
-  identifier = "my-db"
+  identifier = var.identifier
 
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
 

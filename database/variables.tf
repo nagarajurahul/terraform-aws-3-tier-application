@@ -14,8 +14,14 @@ variable "instance_class"{
 variable "allocated_storage"{
     default = 10
 }
+variable "skip_final_snapshot" {
+    default = true
+}
 variable "db_name" {
-    default = "my_db"
+    default = "my-db"
+}
+variable "identifier" {
+    default = "my-db"
 }
 variable "subnet_ids"{
     type    = list(string)
