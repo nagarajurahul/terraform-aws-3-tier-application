@@ -2,7 +2,8 @@ variable "username" {
 
 }
 variable "password"{
-    
+    description = "RDS Master password"
+    sensitive   = true
 }
 variable "instance_class"{
     default = "db.t3.micro"
