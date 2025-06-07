@@ -18,10 +18,10 @@ variable "skip_final_snapshot" {
     default = true
 }
 variable "db_name" {
-    default = "my-db"
+    default = "mydb"
 }
 variable "identifier" {
-    default = "my-db"
+    default = "mydb"
 }
 variable "subnet_ids"{
     type    = list(string)
