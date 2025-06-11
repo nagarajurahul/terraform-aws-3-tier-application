@@ -21,6 +21,9 @@ module "backend" {
     owner = var.owner
     env=var.env
     vpc_id = var.vpc_id
+
+    source_security_group_id = module.frontend.frontend_security_group_id
+    backend_port = var.backend_port
 }
 
 module "database"{

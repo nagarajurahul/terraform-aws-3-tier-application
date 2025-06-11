@@ -19,3 +19,6 @@ variable "password" {
 variable skip_final_snapshot{
     default = false
 }
+variable "backend_port" {
+  default = 3000
+}

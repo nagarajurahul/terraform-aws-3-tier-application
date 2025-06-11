@@ -9,6 +9,8 @@ module "security_group_rules"{
     source = "../security-group-rules/backend"
 
     security_group_id = module.security_group.security_group_id
+    source_security_group_id = var.source_security_group_id
+    backend_port = var.backend_port
 }
 
 module "iam"{
