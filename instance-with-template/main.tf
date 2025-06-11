@@ -56,7 +56,7 @@ resource "aws_launch_template" "launch_template"{
 }
 
 resource "aws_instance" "instance"{
-    associate_public_ip_address = true
+    associate_public_ip_address = var.associate_public_ip_address
 
     launch_template {
       id = aws_launch_template.launch_template.id

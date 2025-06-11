@@ -16,6 +16,9 @@ variable "instance_type"{
 variable "hibernation_mode"{
     default = false
 }
+variable "associate_public_ip_address" {
+    default = false
+}
 variable "security_group_id"{
 
 }

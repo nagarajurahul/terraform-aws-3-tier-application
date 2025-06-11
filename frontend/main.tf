@@ -26,7 +26,7 @@ module "instance_with_template"{
     
     vpc_id = var.vpc_id
     security_group_id = module.security_group.security_group_id
+    associate_public_ip_address=var.associate_public_ip_address
 
     iam_instance_profile_name = module.iam.iam_instance_profile_name
 }
-
