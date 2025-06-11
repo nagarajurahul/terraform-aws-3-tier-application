@@ -24,6 +24,7 @@ module "security-group-rules"{
 }
 
 data "aws_secretsmanager_secret_version" "secret_value" {
+  
   secret_id = var.secret_id
 }
 
