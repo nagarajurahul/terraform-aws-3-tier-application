@@ -44,3 +44,6 @@ variable "rds_multi_az" {
 variable "secret_id" {
   
 }
+variable "secret_version_id" {
+    
+}
