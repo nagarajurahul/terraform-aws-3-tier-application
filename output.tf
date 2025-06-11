@@ -21,3 +21,8 @@ output "backend_security_group_id"{
     
     description = "Backend - Security group id attached to the instance"
 }
+
+output "rds_endpoint" {
+  value     = module.database.rds_endpoint
+  sensitive = true
+}
