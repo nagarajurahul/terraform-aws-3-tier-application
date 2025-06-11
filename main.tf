@@ -56,6 +56,6 @@ module "database"{
 
     secret_version_id = module.secrets.secret_version_id
 
-    depends_on = [module.secrets]
+    depends_on = [module.secrets-manager]
     secret_id = module.secrets-manager.secret_id
 }
