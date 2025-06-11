@@ -7,24 +7,24 @@ terraform {
   }
 }
 
-module "frontend" {
-    source = "./frontend"
+# module "frontend" {
+#     source = "./frontend"
 
-    owner = var.owner
-    env=var.env
-    vpc_id = var.vpc_id
-}
+#     owner = var.owner
+#     env=var.env
+#     vpc_id = var.vpc_id
+# }
 
-module "backend" {
-    source = "./backend"
+# module "backend" {
+#     source = "./backend"
     
-    owner = var.owner
-    env=var.env
-    vpc_id = var.vpc_id
+#     owner = var.owner
+#     env=var.env
+#     vpc_id = var.vpc_id
 
-    source_security_group_id = module.frontend.frontend_security_group_id
-    backend_port = var.backend_port
-}
+#     source_security_group_id = module.frontend.frontend_security_group_id
+#     backend_port = var.backend_port
+# }
 
 module "secrets-manager" {
   source = "./secrets-manager"
@@ -40,7 +40,8 @@ module "secrets-manager" {
 module "database"{
     source = "./database"
 
-    source_security_group_id = module.backend.backend_security_group_id
+    # source_security_group_id = module.backend.backend_security_group_id
+    source_security_group_id = var.backend_security_group_id
     vpc_id = var.vpc_id
     subnet_ids = var.subnet_ids
 
