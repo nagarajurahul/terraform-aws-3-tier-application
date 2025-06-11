@@ -19,8 +19,12 @@ module "frontend" {
 
   vpc_id          = var.vpc_id
   subnet_ids      = var.public_subnet_ids
-  env             = "dev"
-  owner           = "owner-name"
   username        = var.username
   password        = var.password
+  env             = "dev"
+  owner           = "owner-name"
+  skip_final_snapshot = false
+  deletion_protection = true
+  rds_multi_az    = false
+  backend_port    = 3000
 }
