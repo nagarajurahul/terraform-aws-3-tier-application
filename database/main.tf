@@ -1,9 +1,11 @@
 resource "aws_db_subnet_group" "db_subnet_group" {
-  name       = "main"
+  name = "${var.identifier}-subnet-group"
   subnet_ids = var.subnet_ids
 
   tags = {
-    Name = "${var.db_name}-subnet group"
+    Name = "${var.identifier}-subnet-group"
+    Env = var.env
+    Owner = var.owner
   }
 }
 
@@ -25,35 +27,32 @@ resource "aws_db_instance" "db_instance" {
   engine               = "mysql"
   engine_version       = "8.0"
   parameter_group_name = "default.mysql8.0"
-
-  db_name              = var.db_name
   
   instance_class       = var.instance_class
   allocated_storage    = var.allocated_storage
+  multi_az = var.rds_multi_az
 
+  db_name              = var.db_name
   username             = var.username
   password             = var.password
-  
-  # To avoid snapshots for free-tier
-  skip_final_snapshot  = var.skip_final_snapshot
 
   # Imp for point in time recovery
   identifier = var.identifier
 
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
 
+  # To avoid snapshots for free-tier
+  skip_final_snapshot  = var.skip_final_snapshot
+  deletion_protection = var.deletion_protection
+  copy_tags_to_snapshot  = true
 
-    
-    # # If multi-az is needed
-    # multi_az = true
+  backup_retention_period = 7
+  backup_window           = "02:00-03:00"
+  maintenance_window      = "Mon:03:00-Mon:04:00"
 
-    # In days
-    # backup_retention_period = 7
-    # backup_window = 
-    # copy_tags_to_snapshot = true
-
-    # # If want to preserve automated backups
-    # delete_automated_backups = false
-    # # For secure db - compliance
-    # deletion_protection = true
+  tags = {
+    Name = "${var.identifier}"
+    Env = var.env
+    Owner = var.owner
+  }
 }

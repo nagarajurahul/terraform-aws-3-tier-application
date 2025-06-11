@@ -35,11 +35,15 @@ resource "aws_launch_template" "launch_template"{
         tags = {
             Type = var.type
             Name = "${var.type}-instance"
+            Owner = var.owner
+            Env           = var.env
         }
     }
 
      tags = {
-        TemplateOwner = var.owner
+        Type = var.type
+        Name = "${var.type}-instance-template"
+        Owner = var.owner
         Env           = var.env
     }
 

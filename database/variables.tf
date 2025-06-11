@@ -1,6 +1,12 @@
 variable "vpc_id"{
     
 }
+variable "env" {
+
+}
+variable "owner"{  
+
+}
 variable "username" {
 
 }
@@ -28,4 +34,10 @@ variable "subnet_ids"{
 }
 variable "source_security_group_id" {
   
+}
+variable "deletion_protection" {
+    default = true
+}
+variable "rds_multi_az" {
+    default = false
 }

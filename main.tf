@@ -33,7 +33,12 @@ module "database"{
     vpc_id = var.vpc_id
     subnet_ids = var.subnet_ids
 
+    env = var.env
+    owner = var.owner
+
     username = var.username
     password = var.password
     skip_final_snapshot = var.skip_final_snapshot
+    deletion_protection = var.deletion_protection
+    rds_multi_az = var.rds_multi_az
 }
