@@ -14,8 +14,8 @@ A reusable Terraform module to deploy a production-grade 3-tier application on A
 ## Usage
 
 ```hcl
-module "frontend" {
-  source = "nagarajurahul/3-tier-application/aws"
+module "three-tier" {
+  source = "github.com/nagarajurahul/terraform-aws-3-tier-application"
 
   vpc_id          = var.vpc_id
   subnet_ids      = var.public_subnet_ids
