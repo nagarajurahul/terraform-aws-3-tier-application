@@ -24,7 +24,8 @@ module "security-group-rules"{
 }
 
 data "aws_secretsmanager_secret_version" "secret_value" {
-  secret_id = var.secret_id
+  secret_id = var.secret_arn
+  depends_on = [var.secret_version_id]
 }
 
 locals {
