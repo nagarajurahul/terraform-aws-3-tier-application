@@ -17,7 +17,12 @@ data "aws_iam_policy_document" "assume_role" {
 }
 
 resource "aws_iam_role" "role" {
-  name               = "${var.type}-role"
+  name               = "${var.type}-ec2-role"
   path               = "/"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
+}
+
+resource "aws_iam_role_policy_attachment" "ssm" {
+  role       = aws_iam_role.role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
