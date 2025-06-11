@@ -4,7 +4,7 @@ variable "env" {
 variable "owner" {
   
 }
-variable "db_name" {
+variable "name" {
   
 }
 variable "username" {

@@ -26,6 +26,17 @@ module "backend" {
     backend_port = var.backend_port
 }
 
+module "secrets-manager" {
+  source = "./secrets-manager"
+  
+  owner = var.owner
+  env=var.env
+
+  name = "database"
+  username = var.username
+  password = var.password
+}
+
 module "database"{
     source = "./database"
 
@@ -41,4 +52,6 @@ module "database"{
     skip_final_snapshot = var.skip_final_snapshot
     deletion_protection = var.deletion_protection
     rds_multi_az = var.rds_multi_az
+
+    secret_id = module.secrets-manager.secret_id
 }

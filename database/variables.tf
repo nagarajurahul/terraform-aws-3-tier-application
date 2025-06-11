@@ -41,3 +41,6 @@ variable "deletion_protection" {
 variable "rds_multi_az" {
     default = false
 }
+variable "secret_id" {
+  
+}

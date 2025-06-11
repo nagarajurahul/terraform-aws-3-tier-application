@@ -23,6 +23,14 @@ module "security-group-rules"{
     source_security_group_id = var.source_security_group_id
 }
 
+data "aws_secretsmanager_secret_version" "secret_value" {
+  secret_id = var.secret_id
+}
+
+locals {
+  rds_secret = jsondecode(data.aws_secretsmanager_secret_version.rds.secret_string)
+}
+
 resource "aws_db_instance" "db_instance" {
   engine               = "mysql"
   engine_version       = "8.0"
@@ -33,8 +41,8 @@ resource "aws_db_instance" "db_instance" {
   multi_az = var.rds_multi_az
 
   db_name              = var.db_name
-  username             = var.username
-  password             = var.password
+  username             = local.rds_secret.username
+  password             = local.rds_secret.password
 
   # Imp for point in time recovery
   identifier = var.identifier

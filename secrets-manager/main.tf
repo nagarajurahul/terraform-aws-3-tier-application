@@ -1,6 +1,6 @@
 resource "aws_secretsmanager_secret" "secret" {
-  name        = "${var.env}/${var.db_name}"
-  description = "Credentials for ${var.env}/${var.db_name}"
+  name        = "${var.env}/${var.name}"
+  description = "Credentials for ${var.env}/${var.name}"
 
   tags = {
     Env = var.env
