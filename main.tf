@@ -54,7 +54,7 @@ module "database"{
     deletion_protection = var.deletion_protection
     rds_multi_az = var.rds_multi_az
 
-    secret_version_id = module.secrets.secret_version_id
+    secret_version_id = module.secrets-manager.secret_version_id
 
     depends_on = [module.secrets-manager]
     secret_id = module.secrets-manager.secret_id
