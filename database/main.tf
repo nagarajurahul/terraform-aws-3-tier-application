@@ -3,7 +3,7 @@ resource "aws_db_subnet_group" "db_subnet_group" {
   subnet_ids = var.subnet_ids
 
   tags = {
-    Name = "My DB subnet group"
+    Name = "${var.db_name}-subnet group"
   }
 }
 

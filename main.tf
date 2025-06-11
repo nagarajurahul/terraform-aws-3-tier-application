@@ -32,4 +32,5 @@ module "database"{
 
     username = var.username
     password = var.password
+    skip_final_snapshot = var.skip_final_snapshot
 }

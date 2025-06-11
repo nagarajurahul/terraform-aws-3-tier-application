@@ -15,7 +15,7 @@ variable "allocated_storage"{
     default = 10
 }
 variable "skip_final_snapshot" {
-    default = true
+    default = false
 }
 variable "db_name" {
     default = "mydb"

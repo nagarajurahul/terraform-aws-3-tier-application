@@ -16,3 +16,6 @@ variable "username" {
 variable "password" {
   
 }
+variable skip_final_snapshot{
+    default = false
+}
