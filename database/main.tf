@@ -28,7 +28,7 @@ data "aws_secretsmanager_secret_version" "secret_value" {
 }
 
 locals {
-  rds_secret = jsondecode(data.aws_secretsmanager_secret_version.secret_value.secret_string)
+  rds_secret = jsondecode(aws_secretsmanager_secret_version.secret_value.secret_string)
 }
 
 resource "aws_db_instance" "db_instance" {

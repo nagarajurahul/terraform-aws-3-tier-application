@@ -1,20 +1,12 @@
-resource "aws_vpc_security_group_ingress_rule" "https_ipv4" {
+resource "aws_vpc_security_group_ingress_rule" "backend_from_source" {
   security_group_id = var.security_group_id
   referenced_security_group_id = var.source_security_group_id
   from_port         = var.backend_port
   to_port           = var.backend_port
   ip_protocol       = "tcp"
-  description = "Allow access to backend - ipv4"
+  description       = "Allow access to backend from source specified"
 }
 
-resource "aws_vpc_security_group_ingress_rule" "https_ipv6" {
-  security_group_id = var.security_group_id
-  referenced_security_group_id = var.source_security_group_id
-  from_port         = var.backend_port
-  to_port           = var.backend_port
-  ip_protocol       = "tcp"
-  description = "Allow access to backend - ipv6"
-}
 
 resource "aws_vpc_security_group_egress_rule" "all_ipv4" {
   security_group_id = var.security_group_id
