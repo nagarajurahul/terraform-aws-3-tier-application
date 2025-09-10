@@ -6,8 +6,11 @@ resource "aws_security_group" "security_group" {
 
     vpc_id = var.vpc_id
 
-    tags = {
+    tags = merge(
+    var.tags,
+    {
         Name = "${var.type}-security-group"
         Type = var.type
     }
+    ) 
 }
