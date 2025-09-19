@@ -14,13 +14,17 @@ A reusable Terraform module to deploy a production-grade 3-tier application on A
 ## Usage
 
 ```hcl
-module "frontend" {
-  source = "nagarajurahul/3-tier-application/aws"
+module "three-tier" {
+  source = "github.com/nagarajurahul/terraform-aws-3-tier-application"
 
   vpc_id          = var.vpc_id
   subnet_ids      = var.public_subnet_ids
-  env             = "dev"
-  owner           = "owner-name"
   username        = var.username
   password        = var.password
+  env             = "dev"
+  owner           = "owner-name"
+  skip_final_snapshot = false
+  deletion_protection = true
+  rds_multi_az    = false
+  backend_port    = 3000
 }

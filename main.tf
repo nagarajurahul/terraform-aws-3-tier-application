@@ -7,25 +7,25 @@ terraform {
   }
 }
 
-# module "frontend" {
-#     source = "./frontend"
+module "frontend" {
+  source = "./frontend"
 
-#     owner = var.owner
-#     env=var.env
-#     vpc_id = var.vpc_id
-# }
+  owner = var.owner
+  env=var.env
+  vpc_id = var.vpc_id
+}
 
-# module "backend" {
-#     source = "./backend"
+module "backend" {
+  source = "./backend"
     
-#     owner = var.owner
-#     env=var.env
-#     vpc_id = var.vpc_id
+  owner = var.owner
+  env=var.env
+  vpc_id = var.vpc_id
 
-#     source_security_group_id = module.frontend.frontend_security_group_id
-#     backend_port = var.backend_port
-# }
-
+  source_security_group_id = module.frontend.frontend_security_group_id
+  backend_port = var.backend_port
+}
+  
 module "secrets-manager" {
   source = "./secrets-manager"
   
@@ -55,7 +55,7 @@ module "database"{
     rds_multi_az = var.rds_multi_az
 
     secret_version_id = module.secrets-manager.secret_version_id
-
     depends_on = [module.secrets-manager]
+    secret_arn = module.secrets-manager.secret_arn
     secret_id = module.secrets-manager.secret_id
 }
