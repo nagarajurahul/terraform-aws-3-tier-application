@@ -48,5 +48,5 @@ variable "secret_arn" {
   
 }
 variable "secret_version_id" {
-  
+
 }

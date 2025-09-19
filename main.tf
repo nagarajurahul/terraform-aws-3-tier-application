@@ -25,7 +25,7 @@ module "backend" {
   source_security_group_id = module.frontend.frontend_security_group_id
   backend_port = var.backend_port
 }
-
+  
 module "secrets-manager" {
   source = "./secrets-manager"
   
@@ -40,7 +40,8 @@ module "secrets-manager" {
 module "database"{
     source = "./database"
 
-    source_security_group_id = module.backend.backend_security_group_id
+    # source_security_group_id = module.backend.backend_security_group_id
+    source_security_group_id = var.backend_security_group_id
     vpc_id = var.vpc_id
     subnet_ids = var.subnet_ids
 
@@ -55,7 +56,6 @@ module "database"{
 
     secret_version_id = module.secrets-manager.secret_version_id
     depends_on = [module.secrets-manager]
-
     secret_arn = module.secrets-manager.secret_arn
     secret_id = module.secrets-manager.secret_id
 }

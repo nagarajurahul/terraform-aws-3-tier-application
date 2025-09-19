@@ -24,7 +24,9 @@ module "security-group-rules"{
 }
 
 data "aws_secretsmanager_secret_version" "secret_value" {
-  secret_id = var.secret_arn
+  secret_id = var.secret_id
+
+  # This will force the data source to wait until the version is published
   depends_on = [var.secret_version_id]
 }
 
